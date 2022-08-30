@@ -1,0 +1,28 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class Post extends Model
+{
+    use HasFactory;
+
+
+    // protected $fillable = ['title', 'excerpt', 'body'];
+    protected $guarded = ['id'];
+    protected $with = ['author', 'category'];
+
+    // untuk membuat relasi antara post dengan category
+    // belongsTo : menunjukkan bahwa post hanya bisa dihubungkan dengan satu category
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
+
+    public function author()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
+}
