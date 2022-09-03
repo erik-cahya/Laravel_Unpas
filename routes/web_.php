@@ -49,3 +49,20 @@ Route::get('/categories', function () {
         "categories" => Category::all()
     ]);
 });
+
+Route::get('/categories/{category:slug}', function (Category $category) {
+    return view('posts', [
+        "title" => "Post by Category : $category->name",
+        "active" => "posts",
+        // load : digunakan untuk mengatasi n+1 problem, sama seperti penggunaan with pada PostController
+        "posts" => $category->posts->load('author', 'category')
+    ]);
+});
+
+Route::get('/authors/{author:username}', function (User $author) {
+    return view('posts', [
+        "title" => "Post by Author : $author->name",
+        // load : digunakan untuk mengatasi n+1 problem, sama seperti penggunaan with pada PostController
+        "posts" => $author->posts->load('category', 'author')
+    ]);
+});
