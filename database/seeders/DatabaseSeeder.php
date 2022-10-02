@@ -18,11 +18,19 @@ class DatabaseSeeder extends Seeder
     {
         // User::factory(10)->create();
 
-        // User::create([
-        //     'name' => 'Erik Cahya Pradana',
-        //     'email' => 'erikcp38@gmail.com',
-        //     'password' => bcrypt('12345')
-        // ]);
+        User::create([
+            'name' => 'Erik Cahya Pradana',
+            'username' => 'Erikcahya',
+            'email' => 'erikcp38@gmail.com',
+            'password' => bcrypt('password')
+        ]);
+
+        User::create([
+            'name' => 'Kadek Indah Melanie Dewi',
+            'username' => 'imellz',
+            'email' => 'indahmelanie77@gmail.com',
+            'password' => bcrypt('password')
+        ]);
 
         // User::create([
         //     'name' => 'Kadek Indah Melanie Dewi',
@@ -39,6 +47,10 @@ class DatabaseSeeder extends Seeder
         Category::create([
             'name' => 'Mobile Programming',
             'slug' => 'mobile-programming'
+        ]);
+        Category::create([
+            'name' => 'Desain Grafis',
+            'slug' => 'desain-grafis'
         ]);
 
 
